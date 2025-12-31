@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>送給你的特別禮物</title>
+    <title>來自防風鈴的禮物</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: radial-gradient(circle at center, #2b32b2, #1488cc);
+            /* 改為街頭風格的深色背景 */
+            background: radial-gradient(circle at center, #4b5563, #111827); 
             overflow: hidden;
             margin: 0;
             height: 100vh;
@@ -50,25 +51,26 @@
             transform-style: preserve-3d;
         }
 
+        /* 風格調整：防風鈴 深綠色 */
         .face {
             position: absolute;
             width: 200px;
             height: 200px;
-            background-color: #ef4444; /* 紅色盒子 */
-            border: 2px solid #b91c1c;
+            background-color: #15803d; /* green-700 */
+            border: 2px solid #14532d; /* green-900 */
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* 絲帶樣式 */
+        /* 絲帶樣式：改為白色，對比強烈，像夾克上的字 */
         .face::before {
             content: '';
             position: absolute;
             width: 40px;
             height: 100%;
-            background-color: #fbbf24; /* 金色絲帶 */
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            background-color: #f3f4f6; /* gray-100 */
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
         }
 
         .face::after {
@@ -76,8 +78,8 @@
             position: absolute;
             height: 40px;
             width: 100%;
-            background-color: #fbbf24;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            background-color: #f3f4f6; /* gray-100 */
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
         }
 
         /* 3D 變換 */
@@ -85,7 +87,7 @@
         .back   { transform: rotateY(180deg) translateZ(100px); }
         .right  { transform: rotateY(90deg) translateZ(100px); }
         .left   { transform: rotateY(-90deg) translateZ(100px); }
-        .bottom { transform: rotateX(-90deg) translateZ(100px); background-color: #b91c1c; }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); background-color: #14532d; }
         
         /* 蓋子 */
         .lid {
@@ -102,8 +104,8 @@
 
         .lid-face {
             position: absolute;
-            background-color: #ef4444;
-            border: 2px solid #b91c1c;
+            background-color: #15803d; /* green-700 */
+            border: 2px solid #14532d;
         }
 
         .lid-top {
@@ -113,18 +115,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ef4444;
+            background-color: #15803d;
         }
         /* 蓋子上的絲帶 */
-        .lid-top::before { content: ''; position: absolute; width: 40px; height: 100%; background: #fbbf24; }
-        .lid-top::after { content: ''; position: absolute; width: 100%; height: 40px; background: #fbbf24; }
+        .lid-top::before { content: ''; position: absolute; width: 40px; height: 100%; background: #f3f4f6; }
+        .lid-top::after { content: ''; position: absolute; width: 100%; height: 40px; background: #f3f4f6; }
 
         .lid-front  { width: 210px; height: 50px; transform: translateZ(105px); }
         .lid-back   { width: 210px; height: 50px; transform: rotateY(180deg) translateZ(105px); }
-        .lid-right  { width: 210px; height: 50px; transform: rotateY(90deg) translateZ(105px); left: 0;} /* Fixed left alignment */
+        .lid-right  { width: 210px; height: 50px; transform: rotateY(90deg) translateZ(105px); left: 0;}
         .lid-left   { width: 210px; height: 50px; transform: rotateY(-90deg) translateZ(105px); left: 0;}
 
-        /* 蝴蝶結 */
+        /* 蝴蝶結：改為金色/黃色，增添一點華麗感或像鈕扣的顏色 */
         .bow {
             position: absolute;
             top: -80px;
@@ -139,7 +141,7 @@
             position: absolute;
             width: 60px;
             height: 60px;
-            border: 15px solid #fbbf24;
+            border: 15px solid #facc15; /* yellow-400 */
             border-radius: 50% 50% 0 50%;
             top: 20px;
         }
@@ -150,7 +152,7 @@
             position: absolute;
             width: 30px;
             height: 30px;
-            background: #fbbf24;
+            background: #facc15;
             border-radius: 50%;
             left: 50%;
             top: 50px;
@@ -173,9 +175,10 @@
             width: 280px;
             background: white;
             padding: 2rem;
-            border-radius: 1rem;
+            border-radius: 0.5rem; /* 稍微方正一點 */
+            border-left: 8px solid #15803d; /* 防風鈴綠邊框 */
             text-align: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 5;
@@ -197,32 +200,48 @@
         .instruction {
             position: absolute;
             bottom: 10%;
-            color: white;
+            color: #e5e7eb;
             font-size: 1.2rem;
+            font-weight: 700;
             opacity: 0.8;
             animation: pulse 2s infinite;
             pointer-events: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 0.1em;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 0.8; }
             50% { opacity: 0.4; }
         }
+        
+        /* 裝飾性背景文字 (類似塗鴉) */
+        .bg-deco {
+            position: absolute;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            transform: rotate(-10deg);
+            pointer-events: none;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
 
+    <div class="bg-deco">WIND BREAKER</div>
+
     <!-- 提示文字 -->
-    <div class="instruction" id="instruction-text">點擊禮物盒來打開驚喜！</div>
+    <div class="instruction" id="instruction-text">CLICK TO OPEN</div>
 
     <!-- 訊息卡片 (隱藏在盒子裡) -->
     <div id="card-container" class="">
         <div class="message-card">
-            <h2 class="text-2xl font-bold text-gray-800 mb-2">Surprise! 🎉</h2>
-            <p class="text-gray-600 mb-6">這是一份特別為你準備的禮物。</p>
+            <h2 class="text-3xl font-black text-gray-900 mb-2 uppercase">BOFURIN</h2>
+            <p class="text-gray-600 mb-6 font-bold">這是來自防風鈴的特別禮物。</p>
             <a href="https://alex-png-ai.github.io/2026-Agg-present-/" target="_blank" 
-               class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-full transform transition hover:scale-105 shadow-lg">
-                打開禮物連結 🎁
+               class="inline-block bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded shadow-lg transform transition hover:-translate-y-1 hover:shadow-xl border-b-4 border-green-900 active:border-b-0 active:translate-y-0">
+                前往禮物 🎁
             </a>
         </div>
     </div>
@@ -265,13 +284,13 @@
             giftBox.classList.add('open');
             instructionText.style.opacity = '0';
 
-            // 2. 播放紙花特效
+            // 2. 播放紙花特效 (防風少年風格配色)
             fireConfetti();
 
             // 3. 延遲顯示卡片
             setTimeout(() => {
                 cardContainer.classList.add('open-card');
-                // 再次播放紙花，增加慶祝感
+                // 再次播放紙花
                 setTimeout(fireConfetti, 300);
             }, 500);
         });
@@ -280,7 +299,8 @@
         function fireConfetti() {
             var count = 200;
             var defaults = {
-                origin: { y: 0.7 }
+                origin: { y: 0.7 },
+                colors: ['#15803d', '#facc15', '#ffffff', '#000000'] // 綠、黃、白、黑
             };
 
             function fire(particleRatio, opts) {
